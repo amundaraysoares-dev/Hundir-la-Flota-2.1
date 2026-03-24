@@ -1,13 +1,15 @@
 from nave import Nave
+from casilla import Casilla
+
 class Tablero:
-    def __init__(self,tamanho=10):
-        #self.tamanho = tamanho
+    def __init__(self):
 
         self.AGUA = 0
         self.TOCADO = 1
         self.HUNDIDO = 2
-        # Creamos una nave de ejemplo
-        por1 = Nave("Destructor", "portaaviones",5)
+
+        #NAVES
+        por1 = Nave("Destructor", "portaaviones", 5)
         fra1 = Nave("Bismarck", "fragata", 3)
         fra2 = Nave("Prince of Wales", "fragata", 3)
         fra3 = Nave("Graf Spee", "fragata", 3)
@@ -17,24 +19,51 @@ class Tablero:
         sub3 = Nave("U-505", "submarino", 1)
         sub4 = Nave("U-534", "submarino", 1)
 
-
+        #CASILLAS
+        #este es un objeto el cual es un casillero donde almacenaremos
+        # 10  filas de 10 casillas para recrear una cuadricua 10x10
+        #dentro de cada casilla se almacenara la informacion de si hay un barco o no
         self.casillero = [
-            [None, None, None, None, None, None, None, None, None, None],
-            [None, por1, por1, por1, por1, por1, None, None, None, None],
-            [None, None, None, None, None, None, None, None, None, None],
-            [None, None, None, fra1, None, None, None, None, None, None],
-            [None, None, None, fra1, None, None, sub1, None, None, None],
-            [None, None, None, fra1, None, None, None, None, None, None],
-            [None, None, None, None, None, None, None, None, None, None],
-            [None, fra2, fra2, fra2, None, None, sub3, None, None, None],
-            [None, None, None, None, None, None, None, None, None, None],
-            [None, fra3, fra3, fra3, None, sub4, None, None, None, sub2]
+            [Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla()],
+
+            [Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla()],
+
+            [Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla()],
+
+            [Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla()],
+
+            [Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla()],
+
+            [Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla()],
+
+            [Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla()],
+
+            [Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla()],
+
+            [Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla()],
+
+            [Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla()]
         ]
 
+
+
+        # portaaviones
+        self.casillero[1][1].nave = por1
+        self.casillero[1][2].nave = por1
+
+        # fragatas
+        self.casillero[3][3].nave = fra1
+        self.casillero[4][3].nave = fra1
+        self.casillero[5][3].nave = fra1
+
+
+        # submarinos
+        self.casillero[4][6].nave = sub1
+
+    # DISPARO
+    #se encarga de comprobar el disparo y mostrarlo por pantalla
+    #tambien llama a la funcion disparo de la clase casilla
+    # y le envia la casilla dentro del casillero que esta siendo atacada
     def comprobar_impacto(self, x, y):
-        print("Estoy comprobando el impacto")
-        nave = self.casillero[x][y]
-        if nave is None:
-            return self.AGUA
-        else:
-            return nave.recibir_disparo()
+        print(f"Impacto en ({x},{y})")
+        return self.casillero[x][y].disparar()
