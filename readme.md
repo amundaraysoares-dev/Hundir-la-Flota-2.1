@@ -30,7 +30,7 @@ class Casilla:
        
         return self.nave.recibir_disparo()
 
-Y por ultimo en tablero cree casillero que es un conjunto de almacenamientos que se encargan de formar un tablero de 10x10 de casillas
+  Y por ultimo en tablero cree casillero que es un conjunto de almacenamientos que se encargan de formar un tablero de 10x10 de casillas
         self.casillero = [
             [Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla()],
 
