@@ -11,13 +11,8 @@ class Tablero:
         #NAVES
         por1 = Nave("Destructor", "portaaviones", 5)
         fra1 = Nave("Bismarck", "fragata", 3)
-        fra2 = Nave("Prince of Wales", "fragata", 3)
-        fra3 = Nave("Graf Spee", "fragata", 3)
 
         sub1 = Nave("U-47", "submarino", 1)
-        sub2 = Nave("U-96", "submarino", 1)
-        sub3 = Nave("U-505", "submarino", 1)
-        sub4 = Nave("U-534", "submarino", 1)
 
         #CASILLAS
         #este es un objeto el cual es un casillero donde almacenaremos
